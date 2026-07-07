@@ -13,26 +13,31 @@
   <!-- TODO: og:image — 1200×630px social card -->
 
   <!-- Placeholder favicon (avoids a 404); TODO: replace with a real one, 32×32px -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%23E4572E'/%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='7' fill='%231E5064'/%3E%3C/svg%3E">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
+  <!-- Ambient canvas: pools drift with scroll; petrol leans to the cursor -->
+  <div class="ambient" aria-hidden="true">
+    <div class="pool pool-petrol" data-lean data-drift="-0.06"></div>
+    <div class="pool pool-tide" data-drift="0.05"></div>
+    <div class="pool pool-glacier" data-drift="-0.03"></div>
+    <div class="pool pool-tide-2" data-drift="0.04"></div>
+  </div>
+
+  <header class="site-head">
     <nav class="site-nav" aria-label="Primary">
       <a class="brand" href="#top">
         <span class="todo-inline">TODO: Name</span>
       </a>
-      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">
-        <span class="nav-toggle-bar" aria-hidden="true"></span>
-        Menu
-      </button>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
       <ul id="nav-menu" class="nav-menu">
         <li><a href="#work">Work</a></li>
         <li><a href="#experience">Experience</a></li>
@@ -45,100 +50,112 @@
   <main id="main">
 
     <!-- ============================================================
-         HERO — built from real identity + strongest work once
-         source documents exist. No typing animations, no wave emoji.
+         HERO — identity at full scale; no typing animation, no wave.
          ============================================================ -->
-    <section class="hero" id="top" aria-labelledby="hero-heading">
-      <div class="container">
-        <p class="hero-kicker todo-inline">TODO: role / discipline (e.g. “Structural engineer”, “Editor &amp; essayist”)</p>
-        <h1 id="hero-heading" class="hero-title">
-          <span class="todo-inline">TODO: Your Name</span>
-        </h1>
-        <p class="hero-lede todo-inline">
-          TODO: one to two sentences — the single strongest true claim from the
-          source documents. What you do, for whom, with what result.
-        </p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#work">See the work</a>
-          <a class="button button-ghost" href="#contact">Get in touch</a>
+    <section class="hero frame" id="top" aria-labelledby="hero-heading">
+      <p class="hero-kicker todo-inline">TODO: role / discipline (e.g. “Structural engineer”, “Editor &amp; essayist”)</p>
+      <h1 id="hero-heading" class="hero-title">
+        <span class="mask"><span class="mask-inner"><span class="todo-inline">TODO: Your Name</span></span></span>
+      </h1>
+      <p class="hero-lede todo-inline">
+        TODO: one to two sentences — the single strongest true claim from the
+        source documents. What you do, for whom, with what result.
+      </p>
+      <div class="hero-actions">
+        <a class="flow-link" href="#work">See the work</a>
+        <a class="flow-link" href="#contact">Get in touch</a>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SELECTED WORK — editorial spreads; skills live in the
+         descriptions as evidence, not in an icon grid.
+         ============================================================ -->
+    <section class="work frame" id="work" aria-labelledby="work-heading">
+      <h2 id="work-heading" class="section-title" data-rise>Selected work</h2>
+
+      <article class="spread spread-a">
+        <span class="spread-num" aria-hidden="true" data-drift="0.08">01</span>
+        <div class="spread-media unclip" data-reveal>
+          <div class="unclip-inner">
+            <div class="todo-media" data-parallax role="img" aria-label="TODO placeholder: project screenshot, 1200 by 750 pixels">
+              <span>TODO: project image<br>1200×750px</span>
+            </div>
+          </div>
         </div>
-      </div>
+        <div class="spread-body">
+          <h3 class="spread-title todo-inline">TODO: Project name</h3>
+          <p class="todo-inline">TODO: what it is, your role, the outcome — with any real metric
+            from the source write-up. Name the tools/skills inside this
+            description rather than in a separate skills grid.</p>
+          <p class="spread-links">
+            <span class="todo-inline">TODO: live link / repo / case-study link</span>
+          </p>
+        </div>
+      </article>
+
+      <article class="spread spread-b">
+        <span class="spread-num" aria-hidden="true" data-drift="-0.06">02</span>
+        <div class="spread-media unclip" data-reveal>
+          <div class="unclip-inner">
+            <div class="todo-media" data-parallax role="img" aria-label="TODO placeholder: project screenshot, 1200 by 750 pixels">
+              <span>TODO: project image<br>1200×750px</span>
+            </div>
+          </div>
+        </div>
+        <div class="spread-body">
+          <h3 class="spread-title todo-inline">TODO: Project name</h3>
+          <p class="todo-inline">TODO: description with evidence, from source documents only.</p>
+          <p class="spread-links">
+            <span class="todo-inline">TODO: live link / repo / case-study link</span>
+          </p>
+        </div>
+      </article>
+
+      <!-- Duplicate <article class="spread"> per additional project,
+           alternating spread-a / spread-b and numbering the spread-num -->
     </section>
 
     <!-- ============================================================
-         SELECTED WORK — one card per project from the write-ups.
-         Skills appear here as evidence, not as an icon grid.
+         EXPERIENCE — chronological ledger from the resume.
          ============================================================ -->
-    <section class="work band band-accent" id="work" aria-labelledby="work-heading">
-      <div class="container">
-        <h2 id="work-heading" class="section-title">Selected work</h2>
+    <section class="experience frame" id="experience" aria-labelledby="experience-heading">
+      <h2 id="experience-heading" class="section-title" data-rise>Experience</h2>
 
-        <article class="project-card">
-          <div class="todo-media" role="img" aria-label="TODO placeholder: project screenshot, 1200 by 750 pixels">
-            <span>TODO: project image<br>1200×750px</span>
-          </div>
-          <div class="project-body">
-            <h3 class="project-title todo-inline">TODO: Project name</h3>
-            <p class="todo-inline">TODO: what it is, your role, the outcome — with any real metric
-              from the source write-up. Name the tools/skills inside this
-              description rather than in a separate skills grid.</p>
-            <p class="project-links">
-              <span class="todo-inline">TODO: live link / repo / case-study link</span>
-            </p>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="todo-media" role="img" aria-label="TODO placeholder: project screenshot, 1200 by 750 pixels">
-            <span>TODO: project image<br>1200×750px</span>
-          </div>
-          <div class="project-body">
-            <h3 class="project-title todo-inline">TODO: Project name</h3>
-            <p class="todo-inline">TODO: description with evidence, from source documents only.</p>
-            <p class="project-links">
-              <span class="todo-inline">TODO: live link / repo / case-study link</span>
-            </p>
-          </div>
-        </article>
-
-        <!-- Duplicate <article class="project-card"> per additional project -->
-      </div>
-    </section>
-
-    <!-- ============================================================
-         EXPERIENCE — chronological entries from the resume.
-         ============================================================ -->
-    <section class="experience" id="experience" aria-labelledby="experience-heading">
-      <div class="container">
-        <h2 id="experience-heading" class="section-title">Experience</h2>
-
-        <ol class="timeline">
-          <li class="timeline-entry">
-            <p class="timeline-dates todo-inline">TODO: dates</p>
-            <h3 class="timeline-role todo-inline">TODO: Role — Employer</h3>
+      <ol class="xp-list">
+        <li class="xp-entry">
+          <p class="xp-dates todo-inline">TODO: dates</p>
+          <div class="xp-body">
+            <h3 class="xp-role todo-inline">TODO: Role — Employer</h3>
             <p class="todo-inline">TODO: 1–3 sentences of what you actually did there,
               verbatim facts from the resume, rewritten first-person for the web.</p>
-          </li>
-          <li class="timeline-entry">
-            <p class="timeline-dates todo-inline">TODO: dates</p>
-            <h3 class="timeline-role todo-inline">TODO: Role — Employer</h3>
+          </div>
+        </li>
+        <li class="xp-entry">
+          <p class="xp-dates todo-inline">TODO: dates</p>
+          <div class="xp-body">
+            <h3 class="xp-role todo-inline">TODO: Role — Employer</h3>
             <p class="todo-inline">TODO: description from resume.</p>
-          </li>
-          <!-- Duplicate <li class="timeline-entry"> per additional position -->
-        </ol>
-      </div>
+          </div>
+        </li>
+        <!-- Duplicate <li class="xp-entry"> per additional position -->
+      </ol>
     </section>
 
     <!-- ============================================================
-         ABOUT — bio + headshot.
+         ABOUT — bio + headshot on the tide pool.
          ============================================================ -->
-    <section class="about band band-ink" id="about" aria-labelledby="about-heading">
-      <div class="container about-grid">
-        <div class="todo-media todo-media-portrait" role="img" aria-label="TODO placeholder: headshot, 640 by 800 pixels">
-          <span>TODO: headshot<br>640×800px</span>
+    <section class="about frame" id="about" aria-labelledby="about-heading">
+      <div class="about-grid">
+        <div class="about-media unclip" data-reveal>
+          <div class="unclip-inner">
+            <div class="todo-media todo-media-portrait" data-parallax role="img" aria-label="TODO placeholder: headshot, 640 by 800 pixels">
+              <span>TODO: headshot<br>640×800px</span>
+            </div>
+          </div>
         </div>
-        <div>
-          <h2 id="about-heading" class="section-title">About</h2>
+        <div class="about-copy">
+          <h2 id="about-heading" class="section-title" data-rise>About</h2>
           <p class="todo-inline">TODO: short bio from source documents — background, focus,
             what you're working toward. First person, no invented facts.</p>
         </div>
@@ -146,26 +163,28 @@
     </section>
 
     <!-- ============================================================
-         CONTACT
+         CONTACT — the page sinks into the deep petrol field.
          ============================================================ -->
-    <section class="contact" id="contact" aria-labelledby="contact-heading">
-      <div class="container">
-        <h2 id="contact-heading" class="section-title">Contact</h2>
+    <div class="deep">
+      <div class="deep-pool" aria-hidden="true"></div>
+      <section class="contact frame" id="contact" aria-labelledby="contact-heading">
+        <h2 id="contact-heading" class="section-title" data-rise>Contact</h2>
         <p class="contact-line todo-inline">TODO: contact email (as a mailto: link)</p>
         <ul class="social-list">
           <li class="todo-inline">TODO: social / professional links (GitHub, LinkedIn, etc.)</li>
         </ul>
-      </div>
-    </section>
+      </section>
+    </div>
 
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
+  <footer class="site-foot deep">
+    <div class="frame">
       <p><span class="todo-inline">TODO: Name</span> · Built by hand, no frameworks.</p>
     </div>
   </footer>
 
+  <script src="assets/lenis.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

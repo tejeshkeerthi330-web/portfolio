@@ -1,20 +1,29 @@
-# Portfolio — base scaffold
+# Portfolio — "Undertow" base
 
-Static site: semantic HTML + one CSS file + a few lines of vanilla JS
-(mobile nav). No frameworks, no build step. Open `index.html` directly or
-drop the folder onto GitHub Pages / Netlify as-is.
+Static site: semantic HTML + one CSS file + vanilla JS, plus a vendored
+copy of [Lenis](https://github.com/darkroomengineering/lenis)
+(`assets/lenis.min.js`, ~16KB) for inertia scrolling — loaded as plain
+scripts, no build step. Open `index.html` directly or drop the folder onto
+GitHub Pages / Netlify as-is.
+
+## Design system — Undertow
+
+One continuous cool canvas; color lives in large soft gradient pools that
+drift with scroll and lean toward the cursor; the page closes by sinking
+into a deep petrol field. No cards, no bands. All tokens live in `:root`
+at the top of `styles.css`. Motion (scroll drift, masked reveals, weighted
+hover, inertia scrolling) is defined in `script.js`; it is fully
+progressive — the page is complete with JS off or `prefers-reduced-motion`
+on. Taste profile recorded in `CLAUDE.md`.
 
 ## Status
 
 This is the **content-free base**. Every fact slot is a visible TODO
-placeholder (yellow striped/highlighted). The design system lives entirely
-in CSS custom properties at the top of `styles.css`, so the real design
-direction — chosen after source documents arrive — is applied by swapping
-tokens, not rewriting rules.
+placeholder (tinted chips / striped plates).
 
 **Next step:** add resume, bios, project write-ups, and images to
-`source-material/`, then run the Phase 1 plan (content inventory, site map,
-three design directions).
+`source-material/`, then run the Phase 1 plan (content inventory, site map)
+and pour the real content in.
 
 ## TODO list (every placeholder on the site)
 
