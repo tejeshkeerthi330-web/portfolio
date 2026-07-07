@@ -33,20 +33,27 @@ The home-page research spreads carry static data-graphic teasers (the
 papers' own numbers — no stock imagery) linking into the explorers. The
 optimized resume lives at `source-material/resume-optimized.md`.
 
-## TODO list (remaining placeholders)
+## TODO list
 
-| # | Item | Where | Notes |
-|---|------|-------|-------|
-| 1 | Headshot | About | 640×800px |
-| 2 | Social / professional links | Contact | GitHub, LinkedIn, etc. |
-| 3 | OG social card image | `<head>` | 1200×630px |
-| 4 | Real favicon | `<head>` | 32×32px |
-| 5 | (Optional) SimScale screenshots | aerodynamics.html | real wall-shear/streamline plots could augment the drawn diagram |
+**Complete.** All placeholders are resolved: headshot at
+`assets/img/headshot.jpg` (swap that one file to update it), OG share card
+at `assets/img/og-card.jpg`, favicon at `assets/favicon.svg`. No social
+links are listed by choice; contact is email + location.
 
 Deliberate omission: the phone number on the resume is **not** published
 on the site (public-web privacy); it remains in the resume documents.
 
-## Deploy
+Optional upgrades, whenever available: a sharper headshot (replace the one
+file), real SimScale screenshots on `aerodynamics.html`, social links in
+the Contact section.
 
-GitHub Pages: Settings → Pages → deploy from branch, root folder.
-Netlify: drag the folder onto app.netlify.com/drop — no config needed.
+## Deploy — GitHub Pages
+
+1. On github.com → this repo → **Settings → Pages**.
+2. Under **Build and deployment**, set Source to **Deploy from a branch**,
+   pick the branch the site lives on, folder **/ (root)**, and Save.
+3. The site appears at `https://<user>.github.io/portfolio/` in about a
+   minute. The `og:image` meta tags assume that URL — edit them in the
+   three HTML files if deploying elsewhere.
+
+Netlify alternative: drag the folder onto app.netlify.com/drop — no config.

@@ -21,7 +21,6 @@
   /* Type */
   --font-display: "Fraunces", Georgia, serif;
   --font-body: "Inter", system-ui, sans-serif;
-  --font-todo: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
   /* Fluid ramp */
   --text-hero:    clamp(3.2rem, 10.5vw, 9rem);
@@ -178,47 +177,6 @@ body::after {
   pointer-events: none;
   opacity: 0.05;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-/* ------------------------------------------------------------
-   TODO scaffolding — placeholders stay unmissable but cool-toned.
-   Every rule in this block disappears with the last placeholder.
-   ------------------------------------------------------------ */
-
-.todo-inline {
-  font-family: var(--font-todo);
-  font-size: 0.9em;
-  background: rgba(191, 207, 216, 0.55);
-  border-bottom: 1px dashed var(--slate);
-  padding: 0 0.3em;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
-}
-
-.deep .todo-inline {
-  background: rgba(241, 245, 246, 0.88);
-  color: var(--ink);
-}
-
-.todo-media {
-  display: grid;
-  place-items: center;
-  text-align: center;
-  font-family: var(--font-todo);
-  font-weight: 600;
-  color: var(--slate);
-  border: 1px dashed var(--slate);
-  background:
-    repeating-linear-gradient(45deg,
-      rgba(191, 207, 216, 0.5), rgba(191, 207, 216, 0.5) 16px,
-      rgba(241, 245, 246, 0.7) 16px, rgba(241, 245, 246, 0.7) 32px);
-  aspect-ratio: 8 / 5;
-  width: 100%;
-  padding: var(--space-4);
-}
-
-.todo-media-portrait {
-  aspect-ratio: 4 / 5;
 }
 
 /* ------------------------------------------------------------
@@ -702,14 +660,6 @@ body::after {
 .contact-loc {
   color: var(--tide);
   margin-bottom: var(--space-4);
-}
-
-.social-list {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: var(--space-4);
-  flex-wrap: wrap;
 }
 
 .site-foot {
