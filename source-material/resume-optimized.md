@@ -65,7 +65,7 @@ program, 2025–2026*
 - Oversaw design-to-print cycles for club projects, coordinating
   technical instruction and production timelines.
 
-**Member — NMHS** · *Aug 2025 – Jun 2026*
+**Member — National Math Honor Society (NMHS)** · *Aug 2025 – Jun 2026*
 
 ## Community Service
 

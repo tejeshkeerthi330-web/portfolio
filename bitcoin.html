@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Bitcoin: How the Industry Opened a Gateway to Criminal Activity — Tejesh Keerthi</title>
+  <meta name="description" content="Interactive study explorer: step through Bitcoin's 2011–2013 price history station by station — from $0.30 at the Silk Road's launch to the ~81% collapse after the FBI seizure.">
+  <meta property="og:title" content="Bitcoin: How the Industry Opened a Gateway to Criminal Activity — Tejesh Keerthi">
+  <meta property="og:description" content="Step through Bitcoin's 2011–2013 arc with the Silk Road — an interactive tour of the study.">
+  <meta property="og:type" content="article">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='7' fill='%231E5064'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="ambient" aria-hidden="true">
+    <div class="pool pool-petrol" data-lean data-drift="-0.06"></div>
+    <div class="pool pool-tide" data-drift="0.05"></div>
+    <div class="pool pool-glacier" data-drift="-0.03"></div>
+  </div>
+
+  <header class="site-head">
+    <nav class="site-nav" aria-label="Primary">
+      <a class="brand" href="index.html">Tejesh Keerthi</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+      <ul id="nav-menu" class="nav-menu">
+        <li><a href="index.html#work">Research</a></li>
+        <li><a href="index.html#experience">Experience</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <section class="x-hero frame" aria-labelledby="paper-title">
+      <span class="x-num" aria-hidden="true" data-drift="0.07">02</span>
+      <p class="x-kicker">Independent Research GT · 2024–2025 · Document analysis</p>
+      <h1 id="paper-title" class="x-title">
+        <span class="mask"><span class="mask-inner">Bitcoin: How the Industry Opened</span></span>
+        <span class="mask"><span class="mask-inner">a Gateway to Criminal Activity</span></span>
+      </h1>
+      <p class="x-lede">
+        My first research project traced how the Silk Road — the Tor-only
+        marketplace that made Bitcoin its payment backbone — shaped the
+        currency's early price history. Step through the 2011–2013 arc below,
+        station by station, exactly as the paper's event chart records it.
+      </p>
+      <p class="x-links">
+        <a class="text-link" href="papers/bitcoin-gateway-to-criminal-activity.pdf">Read the full paper (PDF)</a>
+        <a class="text-link" href="index.html#work">← All research</a>
+      </p>
+    </section>
+
+    <!-- ============================================================
+         THE STORY — scrub the price arc through six stations.
+         Prices and activity notes are the paper's event chart rows.
+         ============================================================ -->
+    <section class="lab frame" aria-labelledby="lab-title">
+      <h2 id="lab-title" class="section-title" data-rise>Walk the price arc</h2>
+      <p class="lab-hint">Six stations from the paper's event chart — the price
+        line draws as you move. Prices are plotted on a log scale (the story
+        runs from thirty cents to eleven hundred dollars) and follow the
+        paper's own ordering.</p>
+
+      <div id="station-chips" class="chip-row" role="radiogroup" aria-label="Timeline station"></div>
+
+      <div class="chart viz">
+        <svg id="btc-chart"></svg>
+        <p class="viz-note">Values as reported in the paper's event chart;
+          stations follow the paper's ordering.</p>
+      </div>
+
+      <div id="chapter-swap" class="chapter chapter-swap" aria-live="polite">
+        <p class="chapter-kicker" id="ch-kicker"></p>
+        <p class="chapter-price" id="ch-price"></p>
+        <p class="chapter-act" id="ch-act"></p>
+        <p class="chapter-body" id="ch-body"></p>
+      </div>
+
+      <div class="step-nav">
+        <button type="button" class="flow-link" id="st-prev">← Previous</button>
+        <button type="button" class="flow-link" id="st-next">Next station →</button>
+      </div>
+
+      <details class="data-details">
+        <summary>View the event chart as a table</summary>
+        <div class="table-scroll">
+          <table class="data-table">
+            <caption class="readout-sub" style="text-align:left; padding-bottom: 0.5rem;">
+              The paper's chart of the most impactful days for Bitcoin's price
+              against Silk Road activity.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Bitcoin price (USD)</th>
+                <th scope="col">Silk Road activity</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Jan 2011</td><td>~$0.30</td><td>Silk Road launches Feb 2011 (initial usage negligible)</td></tr>
+              <tr><td>Jun 2011 (first peak)</td><td>~$30</td><td>Silk Road begins; volume still tiny</td></tr>
+              <tr><td>End 2012</td><td>~$12.60</td><td>Trading ~6–9.5k BTC/day (≈$15M/yr); ~4.5% of Bitcoin trades</td></tr>
+              <tr><td>Apr 2013</td><td>~$266</td><td>Silk Road activity high (mid-bull run)</td></tr>
+              <tr><td>Nov 2013 (pre-seizure)</td><td>~$1,100</td><td>Total sales ≈9.5M BTC (~$1.2B); ~20% of BTC economic activity at peak</td></tr>
+              <tr><td>Oct 2013 (closure)</td><td>~$204</td><td>Site seized and closed by FBI (≈26k BTC seized)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </section>
+
+    <!-- ============================================================
+         METHOD / FINDINGS / LIMITS
+         ============================================================ -->
+    <section class="x-section frame" aria-labelledby="method-title">
+      <h2 id="method-title" class="x-section-title" data-rise>How the study was built</h2>
+      <div class="x-prose">
+        <p>The method was document analysis: comparing accounts and price
+          records across sources — RAND's work on terrorist use of
+          cryptocurrencies, WIRED's reporting on the seizure, the Fordham
+          Journal of Corporate &amp; Financial Law, Investopedia's price
+          histories — to find direct correlations between Silk Road events and
+          Bitcoin's price movements.</p>
+      </div>
+    </section>
+
+    <section class="x-section frame" aria-labelledby="findings-title">
+      <h2 id="findings-title" class="x-section-title" data-rise>What it found</h2>
+      <ul class="x-fact-list">
+        <li>Bitcoin rose from roughly <strong>$0.30 to ~$1,100</strong> across
+          the Silk Road's active years, 2011–2013.</li>
+        <li>At its peak, the marketplace accounted for roughly
+          <strong>20% of Bitcoin's economic activity</strong>, with total sales
+          near 9.5 million BTC — about $1.2 billion.</li>
+        <li>Immediately after the FBI seizure, the price collapsed more than
+          <strong>81%</strong> from its pre-seizure high — the paper reads the
+          two as directly related.</li>
+        <li>Across the full period, I inferred the Silk Road drove
+          <strong>5–15% of all Bitcoin price movements</strong> — a criminal
+          marketplace as a measurable market force.</li>
+      </ul>
+    </section>
+
+    <section class="x-section frame" aria-labelledby="limits-title">
+      <h2 id="limits-title" class="x-section-title" data-rise>Limits, honestly</h2>
+      <div class="x-prose">
+        <p>There is no fully accurate way to isolate one influence on a
+          currency moved by countless factors — each can reinforce or mask the
+          Silk Road's effect, so the 5–15% figure is an educated estimate, not
+          a measurement. The paper sketches the isolation procedure a longer
+          study would need: estimate and strip each competing influence,
+          iterate, and accept that every estimate carries its own distortion.</p>
+      </div>
+    </section>
+
+    <div class="deep">
+      <div class="deep-pool" aria-hidden="true"></div>
+      <section class="contact frame" aria-label="Paper links">
+        <h2 class="section-title" data-rise>Go deeper</h2>
+        <p class="contact-line">The full paper — abstract to works cited:<br>
+          <a class="flow-link" href="papers/bitcoin-gateway-to-criminal-activity.pdf">Download the PDF</a>
+        </p>
+        <p class="contact-loc"><a class="text-link" style="color: inherit;" href="aerodynamics.html">Next study: surface topography &amp; aerodynamics →</a></p>
+      </section>
+    </div>
+
+  </main>
+
+  <footer class="site-foot deep">
+    <div class="frame">
+      <p>Tejesh Keerthi · Built by hand, no frameworks.</p>
+    </div>
+  </footer>
+
+  <script src="assets/lenis.min.js"></script>
+  <script src="script.js"></script>
+  <script src="assets/btc-explorer.js"></script>
+</body>
+</html>

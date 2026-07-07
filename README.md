@@ -18,21 +18,30 @@ on. Taste profile recorded in `CLAUDE.md`.
 
 ## Status
 
-**Populated.** All text content is real and traces to the documents in
-`source-material/` (resume + two research papers). Both papers are hosted
-in `papers/` and linked from their research spreads. The optimized resume
-lives at `source-material/resume-optimized.md`.
+**Populated, with interactive study explorers.** All text content is real
+and traces to the documents in `source-material/` (resume + two research
+papers). Both papers are hosted in `papers/` and each has an interactive
+explorer page built from its own reported data:
+
+- `aerodynamics.html` — pick any of the seven surface finishes and the
+  flow diagram, readouts, and drag chart settle to that finish's simulated
+  values (Table 1 of the paper).
+- `bitcoin.html` — walk Bitcoin's 2011–2013 price arc station by station,
+  as recorded in the paper's event chart.
+
+The home-page research spreads carry static data-graphic teasers (the
+papers' own numbers — no stock imagery) linking into the explorers. The
+optimized resume lives at `source-material/resume-optimized.md`.
 
 ## TODO list (remaining placeholders)
 
 | # | Item | Where | Notes |
 |---|------|-------|-------|
 | 1 | Headshot | About | 640×800px |
-| 2 | Aerodynamics project image | Research 01 | e.g. SimScale wall shear / streamline plot, 1200×750px |
-| 3 | Bitcoin project image | Research 02 | e.g. BTC price vs. Silk Road activity chart, 1200×750px |
-| 4 | Social / professional links | Contact | GitHub, LinkedIn, etc. |
-| 5 | OG social card image | `<head>` | 1200×630px |
-| 6 | Real favicon | `<head>` | 32×32px |
+| 2 | Social / professional links | Contact | GitHub, LinkedIn, etc. |
+| 3 | OG social card image | `<head>` | 1200×630px |
+| 4 | Real favicon | `<head>` | 32×32px |
+| 5 | (Optional) SimScale screenshots | aerodynamics.html | real wall-shear/streamline plots could augment the drawn diagram |
 
 Deliberate omission: the phone number on the resume is **not** published
 on the site (public-web privacy); it remains in the resume documents.

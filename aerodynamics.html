@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Topographical Effects of Materials on Aerodynamics — Tejesh Keerthi</title>
+  <meta name="description" content="Interactive study explorer: seven GT3 surface finishes, seven CFD simulations. Drag rose 124% from gloss carbon fiber to matte vinyl wrap — pick a finish and watch the boundary layer change.">
+  <meta property="og:title" content="Topographical Effects of Materials on Aerodynamics — Tejesh Keerthi">
+  <meta property="og:description" content="Seven GT3 surface finishes, seven CFD simulations, one variable: wall roughness. An interactive tour of the study.">
+  <meta property="og:type" content="article">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='7' fill='%231E5064'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="ambient" aria-hidden="true">
+    <div class="pool pool-petrol" data-lean data-drift="-0.06"></div>
+    <div class="pool pool-tide" data-drift="0.05"></div>
+    <div class="pool pool-glacier" data-drift="-0.03"></div>
+  </div>
+
+  <header class="site-head">
+    <nav class="site-nav" aria-label="Primary">
+      <a class="brand" href="index.html">Tejesh Keerthi</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+      <ul id="nav-menu" class="nav-menu">
+        <li><a href="index.html#work">Research</a></li>
+        <li><a href="index.html#experience">Experience</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <section class="x-hero frame" aria-labelledby="paper-title">
+      <span class="x-num" aria-hidden="true" data-drift="0.07">01</span>
+      <p class="x-kicker">Intern Mentor program · 2025–2026 · CFD study</p>
+      <h1 id="paper-title" class="x-title">
+        <span class="mask"><span class="mask-inner">Topographical Effects of</span></span>
+        <span class="mask"><span class="mask-inner">Materials on Aerodynamics</span></span>
+      </h1>
+      <p class="x-lede">
+        Does the surface finish of GT3 racecar bodywork matter aerodynamically?
+        I ran seven CFD simulations — identical geometry, boundary conditions,
+        and mesh, with only the wall roughness changed between runs — across the
+        finishes a GT3 car actually wears. The answer: drag rose 124% from the
+        smoothest finish to the roughest.
+      </p>
+      <p class="x-links">
+        <a class="text-link" href="papers/topographical-effects-of-materials-on-aerodynamics.pdf">Read the full paper (PDF)</a>
+        <a class="text-link" href="index.html#work">← All research</a>
+      </p>
+    </section>
+
+    <!-- ============================================================
+         THE LAB — pick a finish, watch the boundary layer change.
+         All values are reported simulation outputs from Table 1.
+         ============================================================ -->
+    <section class="lab frame" aria-labelledby="lab-title">
+      <h2 id="lab-title" class="section-title" data-rise>Run the flow yourself</h2>
+      <p class="lab-hint">Seven finishes, one flow. Pick a surface and the
+        diagram settles to its simulated behavior — where the boundary layer
+        trips from smooth laminar flow into turbulence, and what that costs in
+        drag. Every figure is a reported value from the study.</p>
+
+      <div id="material-chips" class="chip-row" role="radiogroup" aria-label="Surface finish"></div>
+
+      <div class="viz">
+        <svg id="flow-svg" viewBox="0 0 960 460" role="img" aria-label="Flow diagram">
+          <!-- flow direction -->
+          <text class="viz-label" x="30" y="140">airflow → 50 m/s</text>
+          <!-- streamlines (built by JS) -->
+          <g id="streams"></g>
+          <!-- thickening turbulent boundary layer -->
+          <path id="bl-wedge" fill="rgba(30, 80, 100, 0.13)" d=""></path>
+          <!-- the plate -->
+          <rect x="90" y="380" width="800" height="7" rx="3.5" fill="#16202A"></rect>
+          <text class="viz-label" x="90" y="412">0%</text>
+          <text class="viz-label" x="890" y="412" text-anchor="end">100% of plate length</text>
+          <!-- transition marker -->
+          <line id="transition-line" x1="0" x2="0" y1="170" y2="380"
+                stroke="#1E5064" stroke-width="2" stroke-dasharray="5 7"></line>
+          <text id="transition-label" class="viz-label" x="0" y="158"
+                fill="#1E5064" font-weight="600"></text>
+          <!-- zone labels -->
+          <text id="laminar-label" class="viz-label" x="0" y="440" text-anchor="middle">laminar</text>
+          <text id="turbulent-label" class="viz-label" x="0" y="440" text-anchor="middle">turbulent</text>
+        </svg>
+        <p class="viz-note">Simulated: 100 mm sphere in a 2 × 1 × 1 m domain, air at
+          293 K, inlet 50 m/s, Re ≈ 3.8 × 10⁶ — drawn here along a plate length,
+          as reported in the study's observations.</p>
+      </div>
+
+      <div class="readouts" aria-live="polite">
+        <div>
+          <p class="readout-label">Drag coefficient C<sub>d</sub></p>
+          <p class="readout-value" id="r-cd">0.021</p>
+        </div>
+        <div>
+          <p class="readout-label">Skin friction C<sub>f</sub></p>
+          <p class="readout-value" id="r-cf">0.0028</p>
+        </div>
+        <div>
+          <p class="readout-label">Laminar until</p>
+          <p class="readout-value" id="r-bl">78%</p>
+        </div>
+        <div>
+          <p class="readout-label">Flow regime</p>
+          <p class="readout-value" id="r-regime">Laminar</p>
+          <p class="readout-sub" id="r-rough">Ra 0.20 µm → ks 1.17 µm</p>
+        </div>
+      </div>
+
+      <p class="obs" id="r-obs">Smoothest surface tested. Streamlines remain
+        attached across nearly the entire plate length.</p>
+
+      <h3 class="chart-title">Drag coefficient across all seven finishes</h3>
+      <div class="chart">
+        <svg id="cd-chart" role="img" aria-label="Bar chart of drag coefficient for seven surface finishes, from 0.021 for gloss carbon fiber to 0.047 for matte vinyl wrap. The full data is available in the table below."></svg>
+      </div>
+
+      <details class="data-details">
+        <summary>View the full simulation table</summary>
+        <div class="table-scroll">
+          <table class="data-table">
+            <caption class="readout-sub" style="text-align:left; padding-bottom: 0.5rem;">
+              Table 1 of the paper — simulation outputs, April 2–13, 2026.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Material</th><th scope="col">Ra (µm)</th>
+                <th scope="col">ks (µm)</th><th scope="col">C<sub>d</sub></th>
+                <th scope="col">C<sub>f</sub></th><th scope="col">BL transition</th>
+                <th scope="col">Flow regime</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Gloss carbon fiber</td><td>0.20</td><td>1.17</td><td>0.021</td><td>0.0028</td><td>78%</td><td>Laminar</td></tr>
+              <tr><td>Gloss clear coat</td><td>0.35</td><td>2.05</td><td>0.023</td><td>0.0031</td><td>72%</td><td>Laminar</td></tr>
+              <tr><td>Gloss vinyl wrap</td><td>0.55</td><td>3.22</td><td>0.026</td><td>0.0035</td><td>61%</td><td>Mostly laminar</td></tr>
+              <tr><td>Bare aluminum</td><td>1.00</td><td>5.86</td><td>0.030</td><td>0.0041</td><td>52%</td><td>Transitional</td></tr>
+              <tr><td>Matte carbon fiber</td><td>1.40</td><td>8.20</td><td>0.034</td><td>0.0047</td><td>45%</td><td>Transitional</td></tr>
+              <tr><td>Matte clear coat</td><td>2.10</td><td>12.30</td><td>0.041</td><td>0.0058</td><td>32%</td><td>Turbulent</td></tr>
+              <tr><td>Matte vinyl wrap</td><td>2.80</td><td>16.40</td><td>0.047</td><td>0.0065</td><td>22%</td><td>Turbulent</td></tr>
+              <tr class="row-note"><td>Gloss group average</td><td>0.37</td><td>2.15</td><td>0.023</td><td>0.0031</td><td>70%</td><td>Laminar</td></tr>
+              <tr class="row-note"><td>Matte group average</td><td>2.10</td><td>12.30</td><td>0.041</td><td>0.0057</td><td>33%</td><td>Turbulent</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </section>
+
+    <!-- ============================================================
+         METHOD / FINDINGS / LIMITS
+         ============================================================ -->
+    <section class="x-section frame" aria-labelledby="method-title">
+      <h2 id="method-title" class="x-section-title" data-rise>How the study was built</h2>
+      <div class="x-prose">
+        <p>Average surface roughness values (Ra) for each material came from
+          peer-reviewed literature and industry surface-finish specifications,
+          converted to equivalent sand-grain roughness with the Nikuradse
+          relation (ks ≈ 5.863 × Ra) — the wall roughness input CFD solvers
+          expect.</p>
+        <p>The seven simulations ran steady-state and incompressible in SimScale
+          with the k-ω SST turbulence model, the industry standard for
+          wall-bounded flows. Identical geometry (a 100 mm sphere in a
+          2000 × 1000 × 1000 mm domain), identical boundary conditions (50 m/s
+          inlet, 0 Pa gauge outlet, air at 293 K), identical mesh — only the
+          wall roughness changed between runs, isolating surface topography as
+          the sole variable.</p>
+      </div>
+    </section>
+
+    <section class="x-section frame" aria-labelledby="findings-title">
+      <h2 id="findings-title" class="x-section-title" data-rise>What it found</h2>
+      <ul class="x-fact-list">
+        <li>Drag rose <strong>124%</strong> from gloss carbon fiber
+          (C<sub>d</sub> 0.021) to matte vinyl wrap (C<sub>d</sub> 0.047);
+          skin friction followed, 0.0028 → 0.0065.</li>
+        <li>A clean performance threshold separates the finish groups: every
+          gloss material stayed laminar or mostly laminar with
+          C<sub>d</sub> below 0.027; every matte material went transitional or
+          turbulent with C<sub>d</sub> above 0.034.</li>
+        <li>The mechanism is boundary layer transition: smooth surfaces held
+          laminar flow to 78% of the plate; the roughest tripped it at 22%.</li>
+        <li>Within each group, ranking by roughness predicts ranking by drag —
+          the magnitude of Ra, not the finish label, is the controlling
+          variable.</li>
+        <li>For a GT3 team, the penalty is real: reduced top speed, higher fuel
+          consumption, and diminished aerodynamic balance over a race distance.</li>
+      </ul>
+    </section>
+
+    <section class="x-section frame" aria-labelledby="limits-title">
+      <h2 id="limits-title" class="x-section-title" data-rise>Limits, honestly</h2>
+      <div class="x-prose">
+        <p>Ra values were literature-sourced rather than measured from physical
+          samples; the geometry was a simplified sphere, not a full GT3 body;
+          SimScale's community-tier mesh introduces numerical error a
+          research-grade mesh wouldn't; and steady-state runs can't capture
+          transient behavior like vortex shedding. The paper closes with the
+          questions these limits raise — from how roughness interacts with
+          diffusers and wings to whether thermal cycling during a race degrades
+          a finish's effective roughness.</p>
+      </div>
+    </section>
+
+    <div class="deep">
+      <div class="deep-pool" aria-hidden="true"></div>
+      <section class="contact frame" aria-label="Paper links">
+        <h2 class="section-title" data-rise>Go deeper</h2>
+        <p class="contact-line">The full paper — abstract to works cited:<br>
+          <a class="flow-link" href="papers/topographical-effects-of-materials-on-aerodynamics.pdf">Download the PDF</a>
+        </p>
+        <p class="contact-loc"><a class="text-link" style="color: inherit;" href="bitcoin.html">Next study: Bitcoin and the Silk Road →</a></p>
+      </section>
+    </div>
+
+  </main>
+
+  <footer class="site-foot deep">
+    <div class="frame">
+      <p>Tejesh Keerthi · Built by hand, no frameworks.</p>
+    </div>
+  </footer>
+
+  <script src="assets/lenis.min.js"></script>
+  <script src="script.js"></script>
+  <script src="assets/aero-explorer.js"></script>
+</body>
+</html>
