@@ -552,6 +552,22 @@ body::after {
   color: var(--slate);
 }
 
+/* Inline text links (paper PDFs) — weighted underline, no box */
+.text-link {
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--petrol);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.25em;
+  transition: color 400ms var(--ease), text-decoration-thickness 400ms var(--ease);
+}
+
+.text-link:hover {
+  color: var(--petrol);
+  text-decoration-thickness: 4px;
+}
+
 /* ------------------------------------------------------------
    Experience — quiet two-column ledger, no timeline bar
    ------------------------------------------------------------ */
@@ -676,6 +692,16 @@ body::after {
   font-size: clamp(1.15rem, 0.6vw + 1rem, 1.5rem);
   margin-bottom: var(--space-4);
   max-width: 60ch;
+}
+
+.contact-line .flow-link {
+  font-size: clamp(1.35rem, 2vw + 0.75rem, 2.2rem);
+  margin-top: var(--space-2);
+}
+
+.contact-loc {
+  color: var(--tide);
+  margin-bottom: var(--space-4);
 }
 
 .social-list {

@@ -18,29 +18,24 @@ on. Taste profile recorded in `CLAUDE.md`.
 
 ## Status
 
-This is the **content-free base**. Every fact slot is a visible TODO
-placeholder (tinted chips / striped plates).
+**Populated.** All text content is real and traces to the documents in
+`source-material/` (resume + two research papers). Both papers are hosted
+in `papers/` and linked from their research spreads. The optimized resume
+lives at `source-material/resume-optimized.md`.
 
-**Next step:** add resume, bios, project write-ups, and images to
-`source-material/`, then run the Phase 1 plan (content inventory, site map)
-and pour the real content in.
-
-## TODO list (every placeholder on the site)
+## TODO list (remaining placeholders)
 
 | # | Item | Where | Notes |
 |---|------|-------|-------|
-| 1 | Name | `<title>`, nav brand, hero, footer | |
-| 2 | Role / discipline kicker | Hero | |
-| 3 | Hero lede (strongest true claim) | Hero | 1–2 sentences |
-| 4 | Meta description + OG title/description | `<head>` | |
+| 1 | Headshot | About | 640×800px |
+| 2 | Aerodynamics project image | Research 01 | e.g. SimScale wall shear / streamline plot, 1200×750px |
+| 3 | Bitcoin project image | Research 02 | e.g. BTC price vs. Silk Road activity chart, 1200×750px |
+| 4 | Social / professional links | Contact | GitHub, LinkedIn, etc. |
 | 5 | OG social card image | `<head>` | 1200×630px |
-| 6 | Project entries (name, description, links) | Selected work | one card per project |
-| 7 | Project screenshots | Selected work | 1200×750px each |
-| 8 | Experience entries (dates, role, employer, description) | Experience | one entry per position |
-| 9 | Bio | About | |
-| 10 | Headshot | About | 640×800px |
-| 11 | Contact email | Contact | as `mailto:` link |
-| 12 | Social / professional links | Contact | |
+| 6 | Real favicon | `<head>` | 32×32px |
+
+Deliberate omission: the phone number on the resume is **not** published
+on the site (public-web privacy); it remains in the resume documents.
 
 ## Deploy
 
