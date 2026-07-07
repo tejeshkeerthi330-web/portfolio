@@ -180,6 +180,40 @@ body::after {
 }
 
 /* ------------------------------------------------------------
+   The veil — a petrol wash that carries you between pages.
+   Covers at first paint (JS on, motion allowed), lifts on
+   arrival, returns on departure. JS off or reduced motion:
+   it never appears at all.
+   ------------------------------------------------------------ */
+
+.veil {
+  position: fixed;
+  inset: -2vh 0;
+  z-index: 40;
+  background: linear-gradient(180deg, rgba(30, 80, 100, 0.98) 0%, #17414F 100%);
+  transform: translateY(104%);
+  pointer-events: none;
+  will-change: transform;
+}
+
+html[data-js] .veil { transform: translateY(0); }
+
+html[data-js] .veil.veil-out {
+  transform: translateY(-104%);
+  transition: transform 520ms var(--ease);
+}
+
+html[data-js] .veil.veil-in {
+  transform: translateY(0);
+  transition: transform 400ms var(--ease);
+  pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .veil { display: none; }
+}
+
+/* ------------------------------------------------------------
    Header — floats on the canvas, retreats as you read,
    returns the moment you scroll back up.
    ------------------------------------------------------------ */
@@ -246,7 +280,7 @@ body::after {
 }
 
 .nav-menu a:hover::after,
-.nav-menu a[aria-current="true"]::after {
+.nav-menu a[aria-current]::after {
   transform: scaleX(1);
 }
 
@@ -362,6 +396,238 @@ body::after {
 .flow-link:hover::after { transform: scaleY(2.2); }
 
 .deep .flow-link::after { background: var(--glacier); }
+
+/* Cover hero (home) — full height, name at maximum scale */
+
+.cover-hero {
+  min-height: 100vh;
+  padding-top: clamp(7rem, 14vh, 9rem);
+}
+
+.cover-hero .hero-title {
+  font-size: clamp(3.4rem, 12vw, 10.5rem);
+}
+
+.hero-cue {
+  position: absolute;
+  bottom: 2.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--slate);
+  text-align: center;
+}
+
+.hero-cue::after {
+  content: "↓";
+  display: block;
+  font-size: 1.1rem;
+  margin-top: 0.3rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-cue::after { animation: bob 2.8s var(--ease) infinite; }
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(7px); }
+}
+
+/* Research index (home) — the two studies as an editorial index */
+
+.index-list {
+  display: grid;
+  gap: clamp(3.5rem, 9vh, 6rem);
+  max-width: 72rem;
+}
+
+.index-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: baseline;
+  column-gap: clamp(1.25rem, 3.5vw, 3.5rem);
+  text-decoration: none;
+  transition: transform 500ms var(--ease);
+}
+
+.index-row:hover { transform: translateY(-4px); }
+
+.index-num {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(3.2rem, 7vw, 6.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  color: var(--petrol);
+}
+
+.index-title {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  position: relative;
+  padding-bottom: 0.12em;
+}
+
+.index-title::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--petrol);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 500ms var(--ease);
+}
+
+.index-row:hover .index-title::after,
+.index-row:focus-visible .index-title::after { transform: scaleX(1); }
+
+.index-sub {
+  display: block;
+  color: var(--slate);
+  margin-top: var(--space-2);
+  max-width: 56ch;
+}
+
+.index-stat { text-align: right; white-space: nowrap; }
+
+.index-stat-num {
+  display: block;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(1.5rem, 2.8vw, 2.5rem);
+  color: var(--petrol);
+  line-height: 1;
+}
+
+.index-stat-label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--slate);
+  margin-top: var(--space-1);
+}
+
+@media (max-width: 47.9rem) {
+  .index-row { grid-template-columns: auto 1fr; row-gap: var(--space-3); }
+  .index-stat { grid-column: 2; text-align: left; }
+}
+
+/* Next-page ribbon (inside every deep close) */
+
+.next-kicker {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--tide);
+  margin-top: var(--space-6);
+}
+
+.next-link {
+  display: inline-block;
+  margin-top: var(--space-2);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 3.2vw, 2.6rem);
+  letter-spacing: -0.01em;
+  color: var(--glacier);
+  text-decoration: none;
+}
+
+.next-link .arr {
+  display: inline-block;
+  transition: transform 500ms var(--ease);
+}
+
+.next-link:hover .arr { transform: translateX(10px); }
+
+/* Deep page (contact) — the whole page sinks */
+
+.page-deep {
+  background: linear-gradient(180deg, #1E5064 0%, #17414F 70%, #132F39 100%);
+  color: var(--glacier);
+}
+
+.page-deep .site-head {
+  background: linear-gradient(180deg,
+    rgba(23, 65, 79, 0.9) 0%,
+    rgba(23, 65, 79, 0.65) 55%,
+    rgba(23, 65, 79, 0) 100%);
+}
+
+.page-deep .brand,
+.page-deep .nav-menu a,
+.page-deep .nav-toggle { color: var(--glacier); }
+
+.page-deep .nav-menu a::after { background: var(--glacier); }
+
+.page-deep .nav-toggle { text-decoration-color: var(--glacier); }
+
+.page-deep :focus-visible { outline-color: var(--glacier); }
+
+@media (max-width: 47.9rem) {
+  .page-deep .site-head:has(.nav-menu.is-open) {
+    background: linear-gradient(180deg,
+      rgba(23, 65, 79, 0.97) 0%,
+      rgba(23, 65, 79, 0.97) 82%,
+      rgba(23, 65, 79, 0) 100%);
+  }
+}
+
+.pool-abyss-a {
+  width: 100vmax; height: 100vmax;
+  top: -35vmax; right: -30vmax;
+  background: radial-gradient(circle,
+    rgba(241, 245, 246, 0.16) 0%,
+    rgba(241, 245, 246, 0.06) 45%,
+    rgba(241, 245, 246, 0) 70%);
+}
+
+.pool-abyss-b {
+  width: 110vmax; height: 110vmax;
+  bottom: -60vmax; left: -40vmax;
+  background: radial-gradient(circle,
+    rgba(191, 207, 216, 0.14) 0%,
+    rgba(191, 207, 216, 0.05) 45%,
+    rgba(191, 207, 216, 0) 70%);
+}
+
+.contact-hero {
+  position: relative;
+  min-height: 82vh;
+  display: grid;
+  align-content: center;
+  padding-block: clamp(8rem, 18vh, 11rem) clamp(3rem, 8vh, 5rem);
+}
+
+.contact-hero .section-title { color: var(--tide); }
+
+.flow-link.contact-mail {
+  font-size: clamp(1.5rem, 4.6vw, 4.2rem);
+  overflow-wrap: anywhere;
+}
+
+.page-deep .contact-loc { color: var(--tide); }
+
+.contact-note {
+  color: rgba(241, 245, 246, 0.85);
+  max-width: 46ch;
+  margin-top: var(--space-4);
+}
 
 /* Masked line reveal — hero only, ≤600ms, once */
 .mask { display: block; overflow: hidden; }

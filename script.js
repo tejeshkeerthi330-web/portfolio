@@ -50,27 +50,43 @@
     revealables.forEach(function (el) { io.observe(el); });
   }
 
-  /* ---------- active section in nav ---------- */
+  /* ---------- the veil: page-to-page wash ---------- */
 
-  var navLinks = document.querySelectorAll(".nav-menu a[href^='#']");
+  var veil = document.querySelector(".veil");
 
-  if ("IntersectionObserver" in window && navLinks.length) {
-    var byId = {};
-    navLinks.forEach(function (a) { byId[a.getAttribute("href").slice(1)] = a; });
-    var sectionIO = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        var link = byId[entry.target.id];
-        if (!link) return;
-        if (entry.isIntersecting) {
-          navLinks.forEach(function (a) { a.removeAttribute("aria-current"); });
-          link.setAttribute("aria-current", "true");
-        }
-      });
-    }, { rootMargin: "-40% 0px -55% 0px" });
-    Object.keys(byId).forEach(function (id) {
-      var section = document.getElementById(id);
-      if (section) sectionIO.observe(section);
+  if (veil) {
+    var lift = function () { veil.classList.add("veil-out"); };
+
+    if (document.documentElement.dataset.js) {
+      // arrival: let the covered frame paint once, then sweep the veil away
+      requestAnimationFrame(function () { requestAnimationFrame(lift); });
+    }
+    // back/forward from the bfcache must never land on a covered page
+    window.addEventListener("pageshow", function (e) {
+      if (e.persisted) lift();
     });
+
+    if (!reduced) {
+      document.querySelectorAll("a[href]").forEach(function (a) {
+        var href = a.getAttribute("href");
+        if (!href || href[0] === "#" || href.indexOf(":") > -1) return;
+        if (!/\.html($|#)/.test(href)) return;
+        a.addEventListener("click", function (e) {
+          if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+          var url = new URL(a.href, location.href);
+          if (url.pathname === location.pathname && !url.hash) {
+            e.preventDefault(); // same page: nothing to wash to
+            return;
+          }
+          if (url.pathname === location.pathname) return; // in-page anchor
+          e.preventDefault();
+          veil.classList.remove("veil-out");
+          void veil.offsetHeight; // restart the transition from rest
+          veil.classList.add("veil-in");
+          setTimeout(function () { location.href = a.href; }, 400);
+        });
+      });
+    }
   }
 
   /* ---------- inertia scrolling (vendored Lenis; optional) ---------- */

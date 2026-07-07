@@ -18,19 +18,25 @@ on. Taste profile recorded in `CLAUDE.md`.
 
 ## Status
 
-**Populated, with interactive study explorers.** All text content is real
+**Complete — six pages, one continuous canvas.** All text content is real
 and traces to the documents in `source-material/` (resume + two research
-papers). Both papers are hosted in `papers/` and each has an interactive
-explorer page built from its own reported data:
+papers). A petrol veil sweeps between pages (JS off / reduced motion: no
+veil, instant navigation).
 
-- `aerodynamics.html` — pick any of the seven surface finishes and the
-  flow diagram, readouts, and drag chart settle to that finish's simulated
-  values (Table 1 of the paper).
-- `bitcoin.html` — walk Bitcoin's 2011–2013 price arc station by station,
-  as recorded in the paper's event chart.
+- `index.html` — the cover: full-height identity hero, research index
+  with stat callouts, a "Currently" line, deep contact close.
+- `research.html` — the archive: both studies with data-graphic teasers,
+  summaries, and paper PDFs (hosted in `papers/`).
+- `aerodynamics.html` — interactive study: pick any of seven surface
+  finishes and the flow diagram, readouts, and drag chart settle to that
+  finish's reported values (Table 1 of the paper).
+- `bitcoin.html` — interactive study: walk Bitcoin's 2011–2013 price arc
+  station by station, as recorded in the paper's event chart.
+- `about.html` — bio + headshot, experience ledger, education, activities.
+- `contact.html` — a full-deep closing page: email, location.
 
-The home-page research spreads carry static data-graphic teasers (the
-papers' own numbers — no stock imagery) linking into the explorers. The
+Every page ends with a "Next" ribbon forming a reading loop
+(cover → archive → study 01 → study 02 → about → contact → cover). The
 optimized resume lives at `source-material/resume-optimized.md`.
 
 ## TODO list

@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.dataset.js="1"</script>
 
   <title>Topographical Effects of Materials on Aerodynamics — Tejesh Keerthi</title>
   <meta name="description" content="Interactive study explorer: seven GT3 surface finishes, seven CFD simulations. Drag rose 124% from gloss carbon fiber to matte vinyl wrap — pick a finish and watch the boundary layer change.">
@@ -24,6 +25,8 @@
 </head>
 <body>
 
+  <div class="veil" aria-hidden="true"></div>
+
   <a class="skip-link" href="#main">Skip to content</a>
 
   <div class="ambient" aria-hidden="true">
@@ -37,10 +40,9 @@
       <a class="brand" href="index.html">Tejesh Keerthi</a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
       <ul id="nav-menu" class="nav-menu">
-        <li><a href="index.html#work">Research</a></li>
-        <li><a href="index.html#experience">Experience</a></li>
-        <li><a href="index.html#about">About</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="research.html" aria-current="page">Research</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -63,7 +65,7 @@
       </p>
       <p class="x-links">
         <a class="text-link" href="papers/topographical-effects-of-materials-on-aerodynamics.pdf">Read the full paper (PDF)</a>
-        <a class="text-link" href="index.html#work">← All research</a>
+        <a class="text-link" href="research.html">← All research</a>
       </p>
     </section>
 
@@ -226,7 +228,8 @@
         <p class="contact-line">The full paper — abstract to works cited:<br>
           <a class="flow-link" href="papers/topographical-effects-of-materials-on-aerodynamics.pdf">Download the PDF</a>
         </p>
-        <p class="contact-loc"><a class="text-link" style="color: inherit;" href="bitcoin.html">Next study: Bitcoin and the Silk Road →</a></p>
+        <p class="next-kicker">Next</p>
+        <a class="next-link" href="bitcoin.html">Study 02 — Bitcoin &amp; the Silk Road <span class="arr">→</span></a>
       </section>
     </div>
 
