@@ -1,0 +1,461 @@
+/* ============================================================
+   PORTFOLIO BASE — design tokens
+   The whole theme lives in these custom properties so the real
+   design direction (chosen after source-material/ is filled)
+   can be applied by swapping tokens, not rewriting rules.
+   ============================================================ */
+
+:root {
+  /* Palette — base theme, to be replaced in Phase 1/2 */
+  --paper:  #FBF7F0;   /* page field */
+  --ink:    #211D1A;   /* text; full-bleed About band */
+  --accent: #E4572E;   /* full-bleed Work band */
+  --card:   #FFFFFF;   /* project cards */
+  --todo-bg:#FFE9A8;   /* placeholder highlight — remove with last TODO */
+
+  /* Type */
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-todo: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* Fluid type ramp */
+  --text-hero:    clamp(2.75rem, 8vw + 1rem, 6rem);
+  --text-section: clamp(1.9rem, 3.5vw + 0.75rem, 3.25rem);
+  --text-h3:      clamp(1.3rem, 1vw + 1rem, 1.6rem);
+  --text-body:    clamp(1rem, 0.2vw + 0.95rem, 1.125rem);
+  --text-small:   0.875rem;
+
+  /* Spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2.5rem;
+  --space-6: 4rem;
+  --space-7: 6.5rem;
+
+  --container: 68rem;
+  --radius: 6px;
+}
+
+/* ------------------------------------------------------------
+   Reset & base
+   ------------------------------------------------------------ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-3);
+  top: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background: var(--ink);
+  color: var(--paper);
+  text-decoration: none;
+  border-radius: var(--radius);
+  transform: translateY(-300%);
+  transition: transform 120ms ease;
+  z-index: 10;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* ------------------------------------------------------------
+   TODO placeholders — deliberately unmissable. Every rule in
+   this block disappears when real content replaces the last
+   placeholder.
+   ------------------------------------------------------------ */
+
+.todo-inline {
+  font-family: var(--font-todo);
+  font-size: 0.9em;
+  background: var(--todo-bg);
+  border: 1px dashed var(--ink);
+  border-radius: 3px;
+  padding: 0 0.35em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.todo-media {
+  display: grid;
+  place-items: center;
+  min-height: 16rem;
+  border: 2px dashed var(--ink);
+  border-radius: var(--radius);
+  background: repeating-linear-gradient(
+    45deg,
+    var(--todo-bg),
+    var(--todo-bg) 14px,
+    var(--paper) 14px,
+    var(--paper) 28px
+  );
+  text-align: center;
+  font-family: var(--font-todo);
+  font-weight: 600;
+  color: var(--ink);
+  padding: var(--space-4);
+}
+
+.todo-media-portrait {
+  aspect-ratio: 4 / 5;
+  min-height: 0;
+}
+
+/* ------------------------------------------------------------
+   Header & nav
+   ------------------------------------------------------------ */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  background: var(--paper);
+  border-bottom: 2px solid var(--ink);
+  z-index: 5;
+}
+
+.site-nav {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding: var(--space-3) var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.25rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.nav-menu {
+  display: flex;
+  gap: var(--space-4);
+  list-style: none;
+  padding: 0;
+}
+
+.nav-menu a {
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 500;
+  padding: var(--space-1) 0;
+  border-bottom: 2px solid transparent;
+  transition: border-color 120ms ease;
+}
+
+.nav-menu a:hover {
+  border-bottom-color: var(--accent);
+}
+
+.nav-toggle {
+  display: none;
+  align-items: center;
+  gap: var(--space-2);
+  font: inherit;
+  font-weight: 600;
+  background: none;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  padding: var(--space-1) var(--space-3);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.nav-toggle-bar {
+  width: 1em;
+  height: 2px;
+  background: currentColor;
+  box-shadow: 0 -4px 0 currentColor, 0 4px 0 currentColor;
+}
+
+@media (max-width: 47.9rem) {
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  .nav-menu {
+    display: none;
+    flex-basis: 100%;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding-block: var(--space-2) var(--space-3);
+  }
+
+  .nav-menu.is-open {
+    display: flex;
+  }
+}
+
+/* ------------------------------------------------------------
+   Full-bleed color bands — color as surface, not trim
+   ------------------------------------------------------------ */
+
+.band {
+  padding-block: var(--space-7);
+}
+
+.band-accent {
+  background: var(--accent);
+}
+
+.band-ink {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.band-ink .todo-inline,
+.band-ink .todo-media {
+  color: var(--ink);
+}
+
+/* ------------------------------------------------------------
+   Hero
+   ------------------------------------------------------------ */
+
+.hero {
+  padding-block: var(--space-7);
+}
+
+.hero-kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: var(--text-small);
+  font-weight: 600;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: var(--text-hero);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin-block: var(--space-3) var(--space-4);
+  max-width: 14ch;
+}
+
+.hero-lede {
+  max-width: 52ch;
+  font-size: calc(var(--text-body) * 1.15);
+}
+
+.hero-actions {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-top: var(--space-5);
+}
+
+.button {
+  display: inline-block;
+  font-weight: 600;
+  text-decoration: none;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius);
+  border: 2px solid var(--ink);
+  transition: transform 120ms ease, background-color 120ms ease,
+    color 120ms ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button-primary {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.button-primary:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.button-ghost {
+  color: var(--ink);
+  background: transparent;
+}
+
+.button-ghost:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* ------------------------------------------------------------
+   Sections
+   ------------------------------------------------------------ */
+
+section {
+  padding-block: var(--space-6);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-section);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-5);
+}
+
+/* Work */
+
+.project-card {
+  display: grid;
+  gap: var(--space-4);
+  background: var(--card);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+
+.project-card + .project-card {
+  margin-top: var(--space-5);
+}
+
+@media (min-width: 48rem) {
+  .project-card {
+    grid-template-columns: 5fr 4fr;
+    align-items: center;
+  }
+}
+
+.project-title {
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+}
+
+.project-links {
+  margin-top: var(--space-3);
+  font-size: var(--text-small);
+}
+
+/* Experience */
+
+.timeline {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: var(--space-5);
+  max-width: 46rem;
+}
+
+.timeline-entry {
+  border-left: 4px solid var(--accent);
+  padding-left: var(--space-4);
+}
+
+.timeline-dates {
+  font-size: var(--text-small);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-1);
+}
+
+.timeline-role {
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+}
+
+/* About */
+
+.about-grid {
+  display: grid;
+  gap: var(--space-5);
+}
+
+@media (min-width: 48rem) {
+  .about-grid {
+    grid-template-columns: 2fr 3fr;
+    align-items: start;
+  }
+}
+
+/* Contact */
+
+.contact-line {
+  font-size: calc(var(--text-body) * 1.2);
+  margin-bottom: var(--space-3);
+}
+
+.social-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+/* ------------------------------------------------------------
+   Footer
+   ------------------------------------------------------------ */
+
+.site-footer {
+  border-top: 2px solid var(--ink);
+  padding-block: var(--space-4);
+  font-size: var(--text-small);
+}
+
+/* ------------------------------------------------------------
+   Motion preferences
+   ------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+}
