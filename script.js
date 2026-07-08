@@ -24,6 +24,13 @@
         toggle.setAttribute("aria-expanded", "false");
       }
     });
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && menu.classList.contains("is-open")) {
+        menu.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.focus();
+      }
+    });
   }
 
   /* ---------- masked hero reveal (arm after first paint) ---------- */

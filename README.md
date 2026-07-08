@@ -1,10 +1,18 @@
-# Portfolio — "Undertow" base
+# Portfolio — "Undertow"
 
 Static site: semantic HTML + one CSS file + vanilla JS, plus a vendored
 copy of [Lenis](https://github.com/darkroomengineering/lenis)
 (`assets/lenis.min.js`, ~16KB) for inertia scrolling — loaded as plain
-scripts, no build step. Open `index.html` directly or drop the folder onto
-GitHub Pages / Netlify as-is.
+scripts, no build step. **Fully self-contained**: fonts (Fraunces + Inter,
+latin subsets) are served from `assets/fonts/`, so the site makes zero
+third-party requests and works offline. Open `index.html` directly or drop
+the folder onto GitHub Pages / Netlify as-is.
+
+Also ships: `404.html` (served automatically by GitHub Pages),
+`robots.txt` + `sitemap.xml`, per-page canonical URLs and theme-color,
+JSON-LD (Person on home/about, ScholarlyArticle on the study pages),
+per-study Open Graph cards, SVG + PNG + Apple touch icons, and a print
+stylesheet.
 
 ## Design system — Undertow
 
